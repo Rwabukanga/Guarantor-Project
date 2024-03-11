@@ -21,10 +21,10 @@ mobileTelephone,nationalId,nationality,passportNumber,placeOfBirth,postalAddress
 
 select
 '90'+'-'+convert(nvarchar, TLn04IntGntor.ClientId)+'-'+convert(nvarchar, TLn04IntGntor.LoanId) AS accountNumber,'' as companyRegNo,'' as companyRegistrationDate,'RWANDA' AS country,
-CASE
+/*CASE
     WHEN DATEDIFF(Year,dbo.TCl01Client.DateBirth,GETDATE()) BETWEEN 18 AND 100 THEN  CONVERT(char(8), dbo.TCl01Client.DateBirth ,112) 
 	ELSE '19900101'
-END AS dateOfBirth,
+END AS dateOfBirth,*/
 
 
  
