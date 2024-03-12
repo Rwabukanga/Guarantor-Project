@@ -15,7 +15,7 @@ AS
 BEGIN
 	
 	SET NOCOUNT ON;
-with ConsumerLoansGuarantor(accountNumber,country,dateOfBirth,foreName1,foreName2,foreName3,homeTelephone,
+with ConsumerLoansGuarantor(accountNumber,country,dateOfBirth,guarantorType,foreName1,foreName2,foreName3,homeTelephone,
 mobileTelephone,nationalId,nationality,passportNumber,placeOfBirth,postalAddressNumber,postalCode,surName,town,workTelephone,recordType) as (
 
 
@@ -24,7 +24,7 @@ select
 CASE
     WHEN DATEDIFF(Year,dbo.TCl01Client.DateBirth,GETDATE()) BETWEEN 18 AND 100 THEN  CONVERT(char(8), dbo.TCl01Client.DateBirth ,112) 
 	ELSE '19900101'
-END AS dateOfBirth,
+END AS dateOfBirth,'I' AS guarantorType,
 
 
  
@@ -82,9 +82,9 @@ from dbo.TLn04IntGntor
 
 
 )
-insert into dbo.CRBGuarantorTable (accountNumber,country,dateOfBirth,foreName1,foreName2,foreName3,homeTelephone,
+insert into dbo.CRBGuarantorTable (accountNumber,country,dateOfBirth,guarantorType,foreName1,foreName2,foreName3,homeTelephone,
 mobileTelephone,nationalId,nationality,passportNumber,placeOfBirth,postalAddressNumber,postalCode,surName,town,workTelephone,recordType)
-SELECT accountNumber,country,dateOfBirth,foreName1,foreName2,foreName3,homeTelephone,
+SELECT accountNumber,country,dateOfBirth,guarantorType,foreName1,foreName2,foreName3,homeTelephone,
 mobileTelephone,nationalId,nationality,passportNumber,placeOfBirth,postalAddressNumber,postalCode,surName,town,workTelephone,recordType from ConsumerLoansGuarantor;
     
 END
