@@ -77,7 +77,7 @@ END AS nationalId,dbo.TCl550Country.Descript as nationality,' ' AS passportNumbe
 from dbo.TLn04IntGntor
 	inner join dbo.TCl01Client on dbo.TLn04IntGntor.ClientId=dbo.TCl01Client.ID
 	INNER JOIN dbo.TCl550Country on dbo.TCl01Client.NationalityID=dbo.TCl550Country.ID
-	inner Join dbo.TLn03Loan on dbo.TLn04IntGntor.CreditID = TLn03Loan.LoanID
+	inner Join dbo.TLn03Loan on dbo.TLn04IntGntor.CreditID = TLn03Loan.LoanID  where dbo.TLn03Loan.OutStCap>0
 	
 
 
